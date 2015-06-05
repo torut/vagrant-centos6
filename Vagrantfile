@@ -22,7 +22,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.vm.provider 'virtualbox' do |vb|
     # name
-    vb.customize ['modifyvm', :id, '--name', 'CentOS-6.5 64bit']
+    vb.customize ['modifyvm', :id, '--name', 'CentOS 6.5 x86_64 Minimal']
     
     # Customize the amount of memory on the VM:
     vb.customize ['modifyvm', :id, '--memory', '1024']
@@ -34,8 +34,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     chef.cookbooks_path = ['./cookbooks', './site-cookbooks']
 
     chef.add_recipe 'selinux::disabled'
-    chef.add_recipe 'sysconfig'
     chef.add_recipe 'iptables::disabled'
+    chef.add_recipe 'sysconfig'
 
     chef.add_recipe 'ntp'
 
@@ -55,8 +55,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
     # PHP: The default is PHP 5.6 remi
     chef.add_recipe 'php56-remi'
-    chef.add_recipe 'phpmyadmin'
-    chef.add_recipe 'phpunit'
+    # chef.add_recipe 'phpmyadmin'
+    # chef.add_recipe 'phpunit'
 
     # Ruby: The default is 2.1.5 by rbenv
     # chef.add_recipe 'ruby'
