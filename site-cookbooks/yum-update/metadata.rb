@@ -1,0 +1,6 @@
+name 'yum-update'
+maintainer 'Toru TAMURA'
+maintainer_email 'torut@ttsoft.jp'
+license 'MIT License'
+description 'update packages by yum.'
+version '1.0'

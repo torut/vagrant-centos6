@@ -1,0 +1,6 @@
+name 'phpunit'
+maintainer 'Toru TAMURA'
+maintainer_email 'torut@ttsoft.jp'
+license 'MIT License'
+description 'Install phpUnit and some tools.'
+version '1.0'

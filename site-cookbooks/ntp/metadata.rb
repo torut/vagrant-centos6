@@ -1,0 +1,6 @@
+name 'ntp'
+maintainer 'Toru TAMURA'
+maintainer_email 'torut@ttsoft.jp'
+license 'MIT License'
+description 'Install ntp package and configure mfeed ntp servers.'
+version '1.0'

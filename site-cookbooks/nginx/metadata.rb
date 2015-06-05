@@ -1,0 +1,6 @@
+name 'nginx'
+maintainer 'Toru TAMURA'
+maintainer_email 'torut@ttsoft.jp'
+license 'MIT License'
+description 'Install NGINX web server.'
+version '1.0'

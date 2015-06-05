@@ -1,0 +1,6 @@
+name 'jenkins'
+maintainer 'Toru TAMURA'
+maintainer_email 'torut@ttsoft.jp'
+license 'MIT License'
+description 'Install CI tool Jenkins.'
+version '1.0'

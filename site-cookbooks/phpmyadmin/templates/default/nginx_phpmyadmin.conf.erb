@@ -1,0 +1,11 @@
+    location ~ ^/phpmyadmin/(.*)$ {
+        alias   /usr/share/phpMyAdmin/$1;
+        index  index.php index.html index.htm;
+        location ~ \.php$ {
+            fastcgi_split_path_info ^/phpmyadmin(.+\.php)(.*)$;
+            fastcgi_pass    php-fpm;
+            fastcgi_index   index.php;
+            include         fastcgi_params;
+            fastcgi_param   SCRIPT_FILENAME /usr/share/phpMyAdmin$fastcgi_script_name;
+        }
+    }

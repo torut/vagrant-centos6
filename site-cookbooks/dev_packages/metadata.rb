@@ -1,0 +1,6 @@
+name 'dev_packages'
+maintainer 'Toru TAMURA'
+maintainer_email 'torut@ttsoft.jp'
+license 'MIT License'
+description 'Install Development tools packages.'
+version '1.0'

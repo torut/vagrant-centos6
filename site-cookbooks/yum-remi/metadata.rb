@@ -1,0 +1,11 @@
+name 'yum-remi'
+maintainer 'Toru TAMURA'
+maintainer_email 'torut@ttsoft.jp'
+license 'MIT License'
+description 'Installs/Configures yum-remi'
+version '1.0'
+depends 'yum', '~> 3.0'
+
+supports 'centos', '>= 5.0'
+supports 'redhat', '>= 5.0'
+supports 'amazon'

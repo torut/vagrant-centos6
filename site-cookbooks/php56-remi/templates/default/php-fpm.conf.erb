@@ -1,0 +1,30 @@
+; include=/etc/php-fpm.d/*.conf
+
+[global]
+pid = /var/run/php-fpm.pid
+error_log = /var/log/php-fpm/error.log
+
+[www]
+listen = <%= node['php']['fpm']['listen'] %>
+listen.owner = nginx
+listen.group = nginx
+listen.mode = 0666
+user = nginx
+group = nginx
+
+pm = dynamic
+pm.max_children = 4
+pm.start_servers = 1
+pm.min_spare_servers = 1
+pm.max_spare_servers = 2
+pm.status_path = /phpfpm_status
+
+slowlog = /var/log/php-fpm/slow.log
+
+php_admin_value[error_log] = /var/log/php-fpm/www-error.log
+php_admin_flag[log_errors] = on
+;php_admin_value[memory_limit] = <%= node['php']['fpm']['listen'] %>
+
+; Set session path to a directory owned by process user
+php_value[session.save_handler] = files
+php_value[session.save_path] = /var/lib/php/session

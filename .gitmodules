@@ -1,0 +1,39 @@
+[submodule "cookbooks/selinux"]
+	path = cookbooks/selinux
+	url = https://github.com/skottler/selinux.git
+[submodule "cookbooks/yum"]
+	path = cookbooks/yum
+	url = https://github.com/chef-cookbooks/yum.git
+[submodule "cookbooks/yum-epel"]
+	path = cookbooks/yum-epel
+	url = https://github.com/chef-cookbooks/yum-epel.git
+[submodule "cookbooks/openssl"]
+	path = cookbooks/openssl
+	url = https://github.com/opscode-cookbooks/openssl.git
+[submodule "cookbooks/chef-sugar"]
+	path = cookbooks/chef-sugar
+	url = https://github.com/sethvargo/chef-sugar.git
+[submodule "cookbooks/iptables"]
+	path = cookbooks/iptables
+	url = https://github.com/opscode-cookbooks/iptables.git
+[submodule "cookbooks/smf"]
+	path = cookbooks/smf
+	url = https://github.com/livinginthepast/smf.git
+[submodule "cookbooks/rbac"]
+	path = cookbooks/rbac
+	url = https://github.com/livinginthepast/rbac.git
+[submodule "cookbooks/yum-percona"]
+	path = cookbooks/yum-percona
+	url = https://github.com/chef-cookbooks/yum-percona.git
+[submodule "cookbooks/percona"]
+	path = cookbooks/percona
+	url = https://github.com/phlipper/chef-percona.git
+[submodule "cookbooks/apt"]
+	path = cookbooks/apt
+	url = https://github.com/opscode-cookbooks/apt.git
+[submodule "cookbooks/build-essential"]
+	path = cookbooks/build-essential
+	url = https://github.com/opscode-cookbooks/build-essential.git
+[submodule "cookbooks/chef-vault"]
+	path = cookbooks/chef-vault
+	url = https://github.com/opscode-cookbooks/chef-vault.git

@@ -1,0 +1,6 @@
+name 'sysconfig'
+maintainer 'Toru TAMURA'
+maintainer_email 'torut@ttsoft.jp'
+license 'MIT License'
+description 'Configure system config.'
+version '1.0'
