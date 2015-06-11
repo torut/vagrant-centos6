@@ -17,8 +17,10 @@ execute 'install zshell' do
   cwd '/usr/local/src'
   not_if { File.exists?('/usr/local/bin/zsh') }
   command <<-EOC
-tar zxf #{tarball}
-cd `ls -l | grep 'zsh' | awk '$1 ~ /d/ {print $9}'`
+rm -rf ./zsh
+mkdir -p ./zsh
+tar zxf #{tarball} -C ./zsh --strip=1
+cd ./zsh
 ./configure --enable-pcre --enable-maildir-support --enable-multibyte --enable-zsh-secure-free --with-tcsetpgrp
 make
 make install
