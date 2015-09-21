@@ -25,6 +25,14 @@ sed -i -e 's/^\([start|exec]\)/#\1/g' /etc/init/control-alt-delete.conf
   EOC
 end
 
+execute "disabled Yum VersionLock plugin" do
+  user "root"
+  command <<-EOC
+sed -i -e "s/^enabled.*$/enabled=0/g" /etc/yum/pluginconf.d/versionlock.conf
+  EOC
+  only_if { File.exists?("/etc/yum/pluginconf.d/versionlock.conf") }
+end
+
 service 'sshd' do
   service_name 'sshd'
   action :nothing
