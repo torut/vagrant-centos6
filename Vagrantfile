@@ -14,6 +14,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   # port forward
   # config.vm.network :forwarded_port, guest: 80, host: 8080
+  config.vm.network :forwarded_port, guest: 3000, host: 3000
 
   # folder sync
   config.vm.synced_folder './', '/mnt/vagrant',
@@ -22,8 +23,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.vm.provider 'virtualbox' do |vb|
     # name
-    vb.customize ['modifyvm', :id, '--name', 'CentOS 6.5 x86_64 Minimal']
-    
+    vb.customize ['modifyvm', :id, '--name', 'CentOS 6.5 x86_64 Ruby 2.1']
+
     # Customize the amount of memory on the VM:
     vb.customize ['modifyvm', :id, '--memory', '1024']
   end
@@ -42,7 +43,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     chef.add_recipe 'dev_packages'
 
     chef.add_recipe 'yum-epel'
-    chef.add_recipe 'yum-remi'
+    # chef.add_recipe 'yum-remi'
 
     chef.add_recipe 'zsh'
 
@@ -51,15 +52,15 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
     # Web server: The default nginx
     chef.add_recipe 'nginx'
-    chef.add_recipe 'httpd'
+    # chef.add_recipe 'httpd'
 
     # PHP: The default is PHP 5.6 remi
-    chef.add_recipe 'php56-remi'
+    # chef.add_recipe 'php56-remi'
     # chef.add_recipe 'phpmyadmin'
     # chef.add_recipe 'phpunit'
 
     # Ruby: The default is 2.1.5 by rbenv
-    # chef.add_recipe 'ruby'
+    chef.add_recipe 'ruby'
 
     # chef.add_recipe 'jenkins'
 
@@ -92,7 +93,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         'absolute_uri' => 'http://192.168.33.11/phpmyadmin/'
       },
       'ruby' => {
-        'version' => '2.1.5'
+        'version' => '2.1.7'
       }
     }
   end
