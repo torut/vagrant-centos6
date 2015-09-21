@@ -35,7 +35,7 @@ rpm -Uvh /nginx-release-centos-6*.rpm
     group 'nginx'
     mode '0755'
     recursive true
-    action :create
+    action :nothing
   end
 
   directory '/etc/nginx/conf.d' do
@@ -46,12 +46,20 @@ rpm -Uvh /nginx-release-centos-6*.rpm
     action :create
   end
 
+  package 'nginx' do
+    action :install
+    options '--enablerepo=nginx'
+    notifies :create, resources(:directory => '/usr/share/nginx/logs'), :immediately
+    notifies :enable, resources(:service => 'nginx')
+  end
+
   template '/etc/nginx/nginx.conf' do
     source 'nginx.conf.erb'
     owner 'root'
     group 'root'
     mode '0644'
-    action :nothing
+    action :create
+    notifies :restart, resources(:service => 'nginx')
   end
 
   template '/etc/nginx/conf.d/default.conf' do
@@ -59,15 +67,7 @@ rpm -Uvh /nginx-release-centos-6*.rpm
     owner 'root'
     group 'root'
     mode '0644'
-    action :nothing
-  end
-
-  package 'nginx' do
-    action :install
-    options '--enablerepo=nginx'
-    notifies :create, resources(:template => '/etc/nginx/nginx.conf'), :immediately
-    notifies :create, resources(:template => '/etc/nginx/conf.d/default.conf'), :immediately
-    notifies :enable, resources(:service => 'nginx')
+    action :create
     notifies :restart, resources(:service => 'nginx')
   end
 
