@@ -23,7 +23,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.vm.provider 'virtualbox' do |vb|
     # name
-    vb.customize ['modifyvm', :id, '--name', 'CentOS 6.5 x86_64 Ruby 2.1']
+    vb.customize ['modifyvm', :id, '--name', 'CentOS 6.5 x86_64 Ruby 2.1 Rails']
 
     # Customize the amount of memory on the VM:
     vb.customize ['modifyvm', :id, '--memory', '1024']
