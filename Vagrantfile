@@ -18,8 +18,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   # folder sync
   config.vm.synced_folder '../', '/mnt/railsapp',
-    :owner => 'vagrant', :group => 'vagrant',
-    :mount_options => ['dmode=777,fmode=777']
+    :owner => 'vagrant', :group => 'vagrant'
 
   config.vm.provider 'virtualbox' do |vb|
     # name
