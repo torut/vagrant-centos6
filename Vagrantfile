@@ -17,7 +17,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.network :forwarded_port, guest: 3000, host: 3000
 
   # folder sync
-  config.vm.synced_folder './', '/mnt/vagrant',
+  config.vm.synced_folder '../', '/mnt/railsapp',
     :owner => 'vagrant', :group => 'vagrant',
     :mount_options => ['dmode=777,fmode=777']
 
