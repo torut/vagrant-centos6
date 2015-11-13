@@ -37,3 +37,18 @@
 [submodule "cookbooks/chef-vault"]
 	path = cookbooks/chef-vault
 	url = https://github.com/opscode-cookbooks/chef-vault.git
+[submodule "cookbooks/discovery"]
+	path = cookbooks/discovery
+	url = git@github.com:hw-cookbooks/discovery.git
+[submodule "cookbooks/runit"]
+	path = cookbooks/runit
+	url = git@github.com:hw-cookbooks/runit.git
+[submodule "cookbooks/packagecloud"]
+	path = cookbooks/packagecloud
+	url = git@github.com:computology/packagecloud-cookbook.git
+[submodule "cookbooks/stunnel"]
+	path = cookbooks/stunnel
+	url = git@github.com:hw-cookbooks/stunnel.git
+[submodule "cookbooks/redis"]
+	path = cookbooks/redis
+	url = git@github.com:miah/chef-redis.git

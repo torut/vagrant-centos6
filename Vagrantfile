@@ -31,6 +31,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vbguest.auto_update = false
 
   config.vm.provision :chef_solo do |chef|
+    chef.provisioning_path = '/var/chef'
+
     chef.cookbooks_path = ['./cookbooks', './site-cookbooks']
 
     chef.add_recipe 'selinux::disabled'
@@ -60,6 +62,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
     # Ruby: The default is 2.1.5 by rbenv
     chef.add_recipe 'ruby'
+
+	# Redis: Server
+	chef.add_recipe "redis::server"
 
     # chef.add_recipe 'jenkins'
 
@@ -93,6 +98,14 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       },
       'ruby' => {
         'version' => '2.1.7'
+      },
+      "redis" => {
+        "install_type" => "source",
+        "source" => {
+          "url" => "http://download.redis.io/releases",
+          "sha" => "3da371693bb54c22da04d86cab1b871072c8d19bdfbc4f811469b7b53384c563",
+          "version" => "2.8.21"
+        }
       }
     }
   end
