@@ -20,9 +20,13 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     :owner => 'vagrant', :group => 'vagrant',
     :mount_options => ['dmode=777,fmode=777']
 
+  config.vm.synced_folder '../', '/mnt/project',
+    :owner => 'vagrant', :group => 'vagrant',
+    :mount_options => ['dmode=777,fmode=777']
+
   config.vm.provider 'virtualbox' do |vb|
     # name
-    vb.customize ['modifyvm', :id, '--name', 'CentOS 6.5 x86_64 Minimal']
+    # vb.customize ['modifyvm', :id, '--name', 'CentOS 6.5 x86_64 Minimal']
     
     # Customize the amount of memory on the VM:
     vb.customize ['modifyvm', :id, '--memory', '1024']
@@ -69,7 +73,20 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       'sysconfig' => {
         'timezone' => 'Asia/Tokyo',
       },
-#      'web_server' => 'httpd', # if use apache for web server comment in this line.
+      'web_server' => 'httpd', # if use apache for web server comment in this line.
+      'httpd' => {
+        'NameVirtualHost' => true,
+        'vhost' => [
+          {
+            'Port' => 80,
+            'ServerAdmin' => 'webmaster@dummy-host.example.com',
+            'DocumentRoot' => '/mnt/project/public',
+            'ServerName' => '192.168.33.11',
+            'ErrorLog' => 'logs/error_log',
+            'CustomLog' => 'logs/access_log combined',
+          }
+        ]
+      },
       'dev_packages' => {
         'packages' => ['wget', 'gcc', 'make', 'tmux', 'emacs-nox', 'git']
       },
