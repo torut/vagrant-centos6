@@ -50,11 +50,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     chef.add_recipe 'percona::server'
 
     # Web server: The default nginx
-    chef.add_recipe 'nginx'
     chef.add_recipe 'httpd'
 
-    # PHP: The default is PHP 5.6 remi
-    chef.add_recipe 'php56-remi'
+    # PHP: The default is PHP 5.4 remi
+    chef.add_recipe 'php54-remi'
     # chef.add_recipe 'phpmyadmin'
     # chef.add_recipe 'phpunit'
 
@@ -78,7 +77,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         'repositories' => ['epel']
       },
       'yum-remi' => {
-        'repositories' => ['remi', 'remi-php56']
+        'repositories' => ['remi']
       },
       'percona' => {
         'server' => {
