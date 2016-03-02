@@ -338,7 +338,7 @@ DocumentRoot "<%= node['httpd']['DocumentRoot'] %>"
 # It can be "All", "None", or any combination of the keywords:
 #   Options FileInfo AuthConfig Limit
 #
-    AllowOverride None
+    AllowOverride ALL
 
 #
 # Controls who can get stuff from this server.
@@ -1029,5 +1029,12 @@ NameVirtualHost *:80
     ServerName <%= node['httpd']['vhost'][0]['ServerName'] %>
     ErrorLog <%= node['httpd']['vhost'][0]['ErrorLog'] %>
     CustomLog <%= node['httpd']['vhost'][0]['CustomLog'] %>
+
+	<Direcotory "<%= node['httpd']['vhost'][0]['DocumentRoot'] %>">
+		Options FollowSymLinks
+		AllowOverride ALL
+		Order allow,deny
+		Allow from all
+	</Directory>
 </VirtualHost>
 <%- end %>
