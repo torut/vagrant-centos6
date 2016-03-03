@@ -15,6 +15,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # port forward
   # config.vm.network :forwarded_port, guest: 80, host: 8080
 
+  # ssh port
+  config.vm.network :forwarded_port, guest: 22, host: 2222, id: "ssh"
+
   # folder sync
   config.vm.synced_folder './', '/mnt/vagrant',
     :owner => 'vagrant', :group => 'vagrant',
