@@ -58,7 +58,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
     # PHP: The default is PHP 5.4 remi
     chef.add_recipe 'php54-remi'
-    # chef.add_recipe 'phpmyadmin'
+    chef.add_recipe 'phpmyadmin'
     # chef.add_recipe 'phpunit'
 
     # Ruby: The default is 2.1.5 by rbenv
