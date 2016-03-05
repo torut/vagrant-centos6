@@ -105,7 +105,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         'date.timezone' => 'Asia/Tokyo'
       },
       'phpmyadmin' => {
-        'absolute_uri' => 'http://192.168.33.11/phpmyadmin/'
+        'absolute_uri' => 'http://192.168.33.11/phpmyadmin/',
+		'version' => '4.4.15.5'
       },
       'ruby' => {
         'version' => '2.1.5'

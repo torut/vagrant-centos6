@@ -8,7 +8,7 @@
 Chef::Recipe.send(:include, Opscode::OpenSSL::Password)
 node.set_unless['phpmyadmin']['cookie_token'] = secure_password
 
-taball = 'http://downloads.sourceforge.net/project/phpmyadmin/phpMyAdmin/4.4.7/phpMyAdmin-4.4.7-all-languages.tar.gz?use_mirror=jaist&ts=1432172560'
+tarball = 'https://files.phpmyadmin.net/phpMyAdmin/' + node['phpmyadmin']['version'] + '/phpMyAdmin-' + node['phpmyadmin']['version'] + '-all-languages.tar.gz'
 
 template '/usr/share/phpMyAdmin/config.inc.php' do
   source 'config.inc.php.erb'
@@ -21,8 +21,8 @@ end
 execute 'install phpMyAdmin' do
   user 'root'
   command <<-EOC
-tar zxf /tmp/phpmyadmin.tar.gz -C /usr/share
-mv /usr/share/phpMyAdmin-4.4.7-all-languages /usr/share/phpMyAdmin
+mkdir /usr/share/phpMyAdmin
+tar zxf /tmp/phpmyadmin.tar.gz -C /usr/share/phpMyAdmin/ --strip=1
   EOC
   action :nothing
   notifies :create, resources(:template => '/usr/share/phpMyAdmin/config.inc.php'), :immediately
@@ -31,8 +31,8 @@ end
 
 remote_file '/tmp/phpmyadmin.tar.gz' do
   action :create
-  source taball
-  retries 30
+  source tarball
+  retries 3
   retry_delay 10
   notifies :run, resources(:execute => 'install phpMyAdmin'), :immediately
 end
