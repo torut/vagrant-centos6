@@ -5,6 +5,13 @@
 # Copyright 2015, Toru TAMURA <https://github.com/torut>
 #
 
+execute 'set ja_JP.utf-8 locale' do
+  user 'root'
+  command <<-EOC
+localedef -f UTF-8 -i ja_JP ja_JP.utf8
+  EOC
+end
+
 execute 'modified system timezone' do
   user 'root'
   command <<-EOC
